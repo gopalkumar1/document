@@ -1,0 +1,55 @@
+docker system df
+docker images -f dangling=true
+
+#clear all docker memory  
+sudo docker buildx prune -f
+sudo docker container prune -f 
+sudo docker image prune
+
+
+
+
+
+
+
+[ec2-user@ip-10-100-22-184 ~]$ docker system df
+
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+
+Images          2         2         17.55GB   0B (0%)
+
+Containers      2         2         509.9kB   0B (0%)
+
+Local Volumes   0         0         0B        0B
+
+Build Cache     64        0         25.82GB   25.82GB
+
+ 
+[ec2-user@ip-10-100-22-184 ~]$ docker images -f dangling=true
+
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+<none>       <none>    a68a8e1e39eb   5 weeks ago   4.38GB
+
+$sudo docker run -d -p 9000:9999 --restart always--name "pvi" pvi-form-engine:1.0
+$ sudo docker run -it -p 9000:9999 pvi-form-engine:1.0 /bin/bash 
+ 
+ 
+ sudo docker run -it -p 9000:9999 pvi-form-engine:1.0 /bin/bash 
+ 
+sudo docker exec -it <container ID> /bin/bash
+ 
+sudo docker rm <containID>
+
+sudo docker build -t pvi-form-engine:1.0 /home/<USERID>/dockerfile_pvi 
+sudo docker run -it --network="host" --name "pvi" pvi-form-engine:1.0 /bin/bash 
+inside the container 
+pm2 start --interpreter="/home/ubuntu/venv_form_engine/bin/python3.6" /home/ubuntu/pvi-form-engine/api/run_api.py 
+pm2 start --interpreter="/home/ubuntu/venv_form_engine/bin/python3.6" /home/ubuntu/pvi-form-engine/unstructured/unstructure_pipeline.py 
+pm2 status 
+ctrl+p+q (to come out of running container) 
+ 
+sudo docker build -t generic-form-parser:1.0 /home/<USERNAME>/docker_JAZZ_GFP 
+sudo docker run -d -p 4455:4455 --restart always --name "gfp_JAZZ" generic-form-parser:1.0 
+sudo docker build -t generic-form-parser:2.0 /home/<USERNAME>/docker_MedWatch_GFP 
+sudo docker run -d -p 4456:4456 --restart always --name "gfp_MedWatch" generic-form-parser:2.0 
+ 

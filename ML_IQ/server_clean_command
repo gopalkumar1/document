@@ -1,0 +1,52 @@
+#delete all container
+sudo docker rm -f $(docker ps -a -q)
+
+#delete all images
+sudo  docker rmi -f $(docker images -q)
+ 
+sudo docker buildx prune -f
+sudo docker container prune -f
+ 
+sudo docker image prune
+ 
+sudo rm -r *
+ 
+#file permission
+sudo chmod +777 docker_wugen_ai.tar 
+
+sudo chown ubuntu:ubuntu docker_wugen_ai.tar
+ 
+#server storage
+df -h
+ 
+#file size
+du -sh <file name>
+ 
+Step 1: server should clean
+step 2: download the build
+step 3: run the IQ docker step
+ 
+To check the server clean or not:
+$ ls
+$ sudo docker images
+ 
+Clean the server file: 
+sudo rm -r *
+#delete all container
+sudo docker rm -f $(docker ps -a -q)
+
+#delete all images
+sudo  docker rmi -f $(docker images -q)
+ 
+sudo docker buildx prune -f
+sudo docker container prune -f
+ 
+sudo docker image prune
+ 
+step 2: aws s3 cp <fulll s3 path> .
+ 
+ 
+ sudo docker buildx prune -f
+sudo docker container prune -f
+ 
+sudo docker image prune
